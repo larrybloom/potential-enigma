@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ES6",                          // Modern JS features but widely supported
+    "module": "CommonJS",                     // Use CommonJS for Node.js compatibility
+     "lib": ["ES2015", "DOM"],                          // Use ES modules (import/export)
+    "moduleResolution": "node",               // Required for module-based tooling
+    "outDir": "./dist",                       // Output compiled JS to a 'dist' folder
+    "rootDir": "./",                          // Base path is project root
+    "allowJs": false,                         // We're using TypeScript only
+    "strict": true,                           // Enable strict type checking
+    "esModuleInterop": true,                  // Allow import of CommonJS modules (like Leaflet)
+    "forceConsistentCasingInFileNames": true, // Helps prevent case-sensitive import bugs
+    "skipLibCheck": true                      // Speed up compile by skipping type checks on deps
+  },
+  "include": [
+    "script.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
