@@ -71,6 +71,19 @@ footer {
     font-size: 0.9em;
 }
 
+#geoButton {
+    background-color: #2196f3;
+    margin-left: 10px;
+}
+
+#geoButton:hover {
+    background-color: #1976d2;
+}
+
+#searchInput{
+    
+}
+
 /* Media Queries for Responsiveness */
 @media (max-width: 600px) {
     .weather-container {

@@ -1,28 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Weather App</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="manifest" href="manifest.json">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather App</title>
 
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Leaflet Map CSS & JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <!-- PWA Manifest & Icons -->
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="/icons/icon-192.png" />
+  <meta name="theme-color" content="#4caf50" />
 </head>
-<body>
-    <header>🌦️ Simple Weather App</header>
 
-    <main>
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Enter city name" />
-            <button id="searchButton">Search</button>
-        </div>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 min-h-screen px-4 py-8 flex flex-col items-center">
 
-        <div id="errorContainer"></div>
-        <div class="weather-container" id="weatherContainer"></div>
-    </main>
+  <!-- App Title -->
+  <header class="text-3xl font-bold text-green-600 dark:text-green-300 mb-6">
+    🌦️ Modern Weather App
+  </header>
 
-    <footer>&copy; 2025 Weather App</footer>
+  <!-- Controls -->
+  <div class="w-full max-w-xl space-y-4 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
+    <div class="flex flex-col sm:flex-row gap-3">
+      <input id="searchInput" type="text" placeholder="Enter city name"
+        class="flex-1 px-4 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:border-gray-600" />
+      <button id="searchButton"
+        class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition">
+        Search
+      </button>
+    </div>
+    <button id="geoButton"
+      class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition">
+      📍 Use My Location
+    </button>
+    <div class="flex flex-wrap gap-4 mt-2 justify-between">
+      <button id="unitToggle"
+        class="bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600">
+        Switch to °F
+      </button>
+      <button id="darkModeToggle"
+        class="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700">
+        Toggle Dark Mode
+      </button>
+    </div>
+  </div>
 
-    <script src="script.js"></script>
+  <!-- Error Display -->
+  <div id="errorContainer" class="mt-4 text-red-500 text-sm font-semibold text-center"></div>
+
+  <!-- Loading Spinner -->
+  <div id="loadingSpinner" class="hidden mt-4 flex justify-center">
+    <svg class="animate-spin h-6 w-6 text-green-600" viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" class="opacity-25"></circle>
+      <path fill="currentColor" class="opacity-75" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+    </svg>
+  </div>
+
+  <!-- Current Weather Card -->
+  <div id="weatherContainer"
+    class="hidden mt-6 w-full max-w-xl bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg space-y-4 text-center">
+    <!-- JS will inject current weather here -->
+  </div>
+
+  <!-- Forecast Section -->
+  <div id="forecastContainer"
+    class="hidden mt-6 w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
+    <!-- JS will inject 5-day forecast cards here -->
+  </div>
+
+  <!-- Map -->
+  <div id="map" class="h-64 w-full max-w-6xl mt-6 rounded-lg shadow-md"></div>
+
+  <!-- Footer -->
+  <footer class="text-sm text-gray-500 dark:text-gray-400 mt-10">
+    &copy; 2025 Weather App
+  </footer>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
